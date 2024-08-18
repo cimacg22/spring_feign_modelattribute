@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: poc-feign-modelattribute
+server:
+  port: 18081
+---
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: ${FEIGN_CONNECT_TIMEOUT:10000}
+        read-timeout: ${FEIGN_READ_TIMEOUT:10000}
+        logger-level: ${FEIGN_LOGGER_LEVEL:FULL}
+      POC:
+        connectTimeout: ${FEIGN_CONNECT_TIMEOUT_SIDER:10000}
+        readTimeout: ${FEIGN_READ_TIMEOUT_SIDER:10000}
+        loggerLevel: ${FEIGN_LOGGER_LEVEL_SIDER:basic}
+---
+cimacg:
+  poc:
+    url: ${FEIGN_CLIENT_URL:http://localhost:18081}
